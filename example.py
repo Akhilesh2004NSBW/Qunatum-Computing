@@ -1,5 +1,6 @@
 from src.core.states import Qubit
 from src.superposition.superposition import create_superposition
+from src.entanglement.entangle import create_bell_pair
 
 # Real coefficientts
 
@@ -21,3 +22,7 @@ print("Superposition from |0>:", q1.alpha, q1.beta)
 q2 = create_superposition('1')
 print("Superposition from |1>:", q2.alpha, q2.beta)
 
+# Entanglement
+
+State = create_bell_pair()
+print("Bell State: ", State)
