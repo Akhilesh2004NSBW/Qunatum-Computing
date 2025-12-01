@@ -290,4 +290,3 @@ MIT License — free for research, education, and development.
 ---
 
 
-If you want, I can also create a **beautiful LinkedIn post** announcing this project.
