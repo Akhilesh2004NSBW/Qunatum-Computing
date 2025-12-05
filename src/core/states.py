@@ -51,3 +51,20 @@ class Qubit:
         vec1 = np.array([self.alpha, self.beta])
         vec2 = np.array([other.alpha, other.beta])
         return np.kron(vec1, vec2)
+    
+    def to_density_matrix(self):
+        """It's the product of column vector and the transpose of its conjucate
+        """
+        vec = np.array([self.alpha, self.beta], dtype=complex).reshape(2, 1)
+        
+        # Congugate and transpose
+        
+        vec_dagger = np.conjugate(vec).T
+        
+        # Outetr Product
+        
+        rho = np.dot(vec, vec_dagger)
+        
+        return rho
+    
+         
