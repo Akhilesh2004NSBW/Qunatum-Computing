@@ -1,102 +1,41 @@
 
----
 
-# **Quantum State Simulation & Decoherence Engine**
+# Quantum State Simulation & Decoherence Engine
 
-### *A Physics-Driven, Mathematics-First Quantum Computing Simulator Built Entirely From Scratch*
-
----
-
-## 🚀 **Project Overview**
-
-This project is a **fully custom quantum simulation engine**, implemented **from first principles** using only:
-
-* Complex numbers
-* Linear algebra
-* Quantum mechanics equations
-* NumPy for raw matrix math
-
-No Qiskit.
-No QuTiP.
-No shortcuts.
-
-Every part of the quantum behavior — superposition, measurement, entanglement, density matrices, noise, and Bloch sphere visualization — is manually derived and implemented.
-
-The goal is to gain **true mastery** of quantum information science by coding the physics itself.
+### *A Fully Custom Quantum Computing Simulator Built From First Principles Using Python & Linear Algebra*
 
 ---
 
-# 🎯 **What This Simulator Can Do**
+## 🚀 Overview
 
-### ✔ Build and manipulate qubits using raw mathematics
+This repository contains a **complete quantum computing simulation engine**, implemented entirely **from scratch** using Python, NumPy, linear algebra, and core quantum mechanics principles.
 
-### ✔ Apply real quantum gates (Hadamard, Pauli, CNOT)
+No external quantum frameworks (Qiskit, QuTiP, Cirq) were used.
 
-### ✔ Generate superposition states manually
+The simulator models:
 
-### ✔ Create Bell-pair entanglement using tensor products
+* Qubits using complex vector mathematics
+* Quantum superposition
+* Measurement and state collapse
+* Quantum gates (H, X, Y, Z, CNOT)
+* Entanglement & Bell state generation
+* Density matrix formalism
+* Noise & decoherence using Kraus operators
+* Bloch sphere visualization
 
-### ✔ Convert state vectors to density matrices
-
-### ✔ Apply Kraus-operator based noise (decoherence)
-
-### ✔ Visualize qubit states on a Bloch sphere
-
-### ✔ Track purity and coherence loss during noise
-
-This framework is designed as a foundation for advanced quantum algorithms and research in decoherence.
-
----
-
-# ⚙️ **Core Components**
-
-## 🔹 1. **Qubit Engine (`states.py`)**
-
-Implements the essential behavior of a quantum bit:
-
-* Complex amplitudes (alpha, beta)
-* Automatic normalization
-* Probability calculations
-* Measurement collapse
-* Matrix-based gate application
-* Tensor product for multi-qubit states
-
-This is the mathematical heart of the simulator.
+The purpose of this project is deep understanding — not shortcuts.
+Every transformation is implemented using **real physics & mathematics**.
 
 ---
 
-## 🔹 2. **Quantum Gates (`gates.py`)**
+## 🎯 Key Objectives
 
-Fully manual gate matrices:
+### ✔ Build a low-level quantum simulator
 
-* **Hadamard (H)** – Creates superposition
-* **Pauli X / Y / Z** – Bit flips & phase flips
-* **Identity (I)**
-* **CNOT** – Enables entanglement
+Using only NumPy and fundamental quantum mechanics.
 
-All gates are implemented as 2×2 or 4×4 **unitary matrices**.
+### ✔ Understand qubit behavior from first principles
 
----
+Normalization, amplitude, probability, collapse, coherence.
 
-## 🔹 3. **Superposition Module (`superposition.py`)**
-
-Generates:
-
-* |+> = (|0> + |1>) / sqrt(2)
-* |-> = (|0> – |1>) / sqrt(2)
-
-By applying the Hadamard matrix directly to basis states.
-
----
-
-## 🔹 4. **Entanglement Module (`entangle.py`)**
-
-Builds 2-qubit Bell States using:
-
-1. Superposition on the first qubit
-2. Tensor product expansion
-3. CNOT gate
-
-Supports all standard Bell states:
-
-* (00 + 11)
+###
