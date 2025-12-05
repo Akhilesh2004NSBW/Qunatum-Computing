@@ -1,292 +1,102 @@
 
 ---
 
-# ⚛️ **Quantum State Simulation & Decoherence Engine**
+# **Quantum State Simulation & Decoherence Engine**
 
-### *A Mathematical, Physics-Driven Quantum Computing Simulator Built Entirely From Scratch*
+### *A Physics-Driven, Mathematics-First Quantum Computing Simulator Built Entirely From Scratch*
 
 ---
 
 ## 🚀 **Project Overview**
 
-This repository contains a **pure Python, mathematics-driven quantum simulator**, built **from first principles** without relying on high-level quantum toolkits such as Qiskit, QuTiP, or Cirq.
+This project is a **fully custom quantum simulation engine**, implemented **from first principles** using only:
 
-The goal is to deeply understand:
+* Complex numbers
+* Linear algebra
+* Quantum mechanics equations
+* NumPy for raw matrix math
 
-* How qubits behave mathematically
-* How quantum gates transform states
-* How superposition and entanglement are formed
-* How tensor products expand Hilbert space
-* How measurement collapses a quantum state
-* How a full quantum circuit simulator can be built manually
+No Qiskit.
+No QuTiP.
+No shortcuts.
 
-This project is being developed as a **research-grade foundation** for advanced quantum simulation, decoherence modeling, and quantum-enhanced machine learning.
+Every part of the quantum behavior — superposition, measurement, entanglement, density matrices, noise, and Bloch sphere visualization — is manually derived and implemented.
 
----
-
-## 🎯 **Project Goals**
-
-### ✔ Build a fully functional low-level quantum simulator
-
-Using only **NumPy, complex numbers, and linear algebra**.
-
-### ✔ Implement quantum behavior mathematically
-
-Not using shortcuts, not importing pre-built libraries.
-
-### ✔ Create a modular, extensible engine
-
-Where new gates, circuits, and algorithms can be added easily.
-
-### ✔ Enable deep learning of quantum mechanics
-
-By coding the physics manually, line by line.
-
-### ✔ Prepare for advanced capabilities
-
-Future stages will include:
-
-* Decoherence & noise channels
-* Density matrix simulation
-* Bloch sphere visualization
-* Quantum circuits
-* Bell state generation
-* Quantum teleportation
-* Grover’s algorithm
-* QML-based analysis
+The goal is to gain **true mastery** of quantum information science by coding the physics itself.
 
 ---
 
-# ⚙️ **Core Features**
+# 🎯 **What This Simulator Can Do**
 
-## 🔹 1. Qubit Engine (`states.py`)
+### ✔ Build and manipulate qubits using raw mathematics
 
-Implements the **fundamental mathematical behavior of a qubit**:
+### ✔ Apply real quantum gates (Hadamard, Pauli, CNOT)
 
-* Complex amplitude representation
+### ✔ Generate superposition states manually
+
+### ✔ Create Bell-pair entanglement using tensor products
+
+### ✔ Convert state vectors to density matrices
+
+### ✔ Apply Kraus-operator based noise (decoherence)
+
+### ✔ Visualize qubit states on a Bloch sphere
+
+### ✔ Track purity and coherence loss during noise
+
+This framework is designed as a foundation for advanced quantum algorithms and research in decoherence.
+
+---
+
+# ⚙️ **Core Components**
+
+## 🔹 1. **Qubit Engine (`states.py`)**
+
+Implements the essential behavior of a quantum bit:
+
+* Complex amplitudes (alpha, beta)
 * Automatic normalization
-* Measurement collapse using genuine quantum probability
-* Unitary gate application (2×2 matrices)
-* Tensor (Kronecker) product for multi-qubit systems
+* Probability calculations
+* Measurement collapse
+* Matrix-based gate application
+* Tensor product for multi-qubit states
 
-Mathematically, a qubit is represented as:
-
-[
-|\psi\rangle = \alpha|0\rangle + \beta|1\rangle, \quad |\alpha|^2 + |\beta|^2 = 1
-]
-
-You implement this *manually* using NumPy.
+This is the mathematical heart of the simulator.
 
 ---
 
-## 🔹 2. Quantum Gates (`gates.py`)
+## 🔹 2. **Quantum Gates (`gates.py`)**
 
-### Implemented:
+Fully manual gate matrices:
 
 * **Hadamard (H)** – Creates superposition
-* **Pauli-X (NOT)**
-* **Pauli-Y**
-* **Pauli-Z**
+* **Pauli X / Y / Z** – Bit flips & phase flips
 * **Identity (I)**
-* **CNOT Gate** (for entanglement)
+* **CNOT** – Enables entanglement
 
-Each gate is represented as a **unitary matrix**, implemented directly using linear algebra—not pre-built functions.
-
----
-
-## 🔹 3. Superposition Module (`superposition.py`)
-
-Creates:
-
-* |+⟩ = (|0⟩ + |1⟩)/√2
-* |−⟩ = (|0⟩ − |1⟩)/√2
-
-Using the Hadamard transform on |0⟩ or |1⟩.
-
-This demonstrates how **quantum amplitudes** work mathematically.
+All gates are implemented as 2×2 or 4×4 **unitary matrices**.
 
 ---
 
-## 🔹 4. Entanglement Module (`entangle.py`)
+## 🔹 3. **Superposition Module (`superposition.py`)**
 
-### *(Added Recently — Day 3 Update)*
+Generates:
 
-Implements true **Bell State generation** using:
+* |+> = (|0> + |1>) / sqrt(2)
+* |-> = (|0> – |1>) / sqrt(2)
+
+By applying the Hadamard matrix directly to basis states.
+
+---
+
+## 🔹 4. **Entanglement Module (`entangle.py`)**
+
+Builds 2-qubit Bell States using:
 
 1. Superposition on the first qubit
-2. Tensor product
-3. CNOT application
+2. Tensor product expansion
+3. CNOT gate
 
-Generates states such as:
+Supports all standard Bell states:
 
-[
-|\Phi^+\rangle = \frac{|00\rangle + |11\rangle}{\sqrt{2}}
-]
-or
-[
-|\Psi^+\rangle = \frac{|01\rangle + |10\rangle}{\sqrt{2}}
-]
-
-Depending on the control and target configuration.
-
-This is the **strongest form of entanglement** in quantum mechanics.
-
----
-
-# 📁 **Project Structure**
-
-```
-Quantum_Simulator/
-│
-├── example.py                 # Demonstrates usage of all modules
-├── README.md
-│
-├── src/
-│   ├── core/
-│   │   └── states.py          # Qubit: normalization, measurement, gates
-│   │
-│   ├── gates/
-│   │   └── gates.py           # Hadamard, Pauli gates, CNOT (unitary logic)
-│   │
-│   ├── superposition/
-│   │   └── superposition.py   # |+> and |-> generation
-│   │
-│   ├── entanglement/
-│   │   └── entangle.py        # Bell state generation (Day 3)
-│
-└── requirements.txt
-```
-
----
-
-# 🛠️ **Installation**
-
-```bash
-pip install numpy
-```
-
----
-
-# ▶️ **How to Use**
-
-## **1. Create and normalize a qubit**
-
-```python
-from src.core.states import Qubit
-
-q = Qubit(3, 4)
-print(q.alpha, q.beta)
-print(q.probabilities())
-```
-
----
-
-## **2. Superposition**
-
-```python
-from src.superposition.superposition import create_superposition
-
-q0 = create_superposition('0')
-q1 = create_superposition('1')
-```
-
----
-
-## **3. Apply quantum gates**
-
-```python
-from src.gates.gates import H, X
-
-q.apply_gate(H)
-```
-
----
-
-## **4. Measure a qubit**
-
-```python
-result = q.measure()
-print(result)
-```
-
----
-
-## **5. Tensor product**
-
-```python
-q1 = Qubit(1, 0)
-q2 = Qubit(0, 1)
-
-multi = q1.tensor(q2)
-print(multi)
-```
-
----
-
-## **6. Entanglement (Bell State)**
-
-```python
-from src.entanglement.entangle import create_bell_pair
-
-state = create_bell_pair()
-print(state)
-```
-
----
-
-# 🧠 **Mathematical Foundations**
-
-### ✔ Linear algebra
-
-### ✔ Complex numbers
-
-### ✔ 2D → 4D Hilbert space expansion
-
-### ✔ Unitary transformations
-
-### ✔ Measurement postulates
-
-### ✔ Tensor product
-
-### ✔ Bell state generation
-
-This simulator is built on **pure quantum mechanics**, not shortcuts.
-
----
-
-# 🌌 **Future Scope**
-
-The long-term vision:
-
-* Quantum circuits
-* Multi-qubit gate pipelines
-* Phase damping & decoherence
-* Density matrices
-* Bloch sphere visualization
-* Quantum Fourier Transform
-* Quantum Teleportation
-* Grover’s Algorithm
-* Variational Quantum Machine Learning (VQML)
-
----
-
-# 🤝 **Contributing**
-
-Contributions are welcome!
-Feel free to submit pull requests for:
-
-* New gates
-* Optimization
-* Circuit implementation
-* Noise models
-* Visualizations
-
----
-
-# 📜 **License**
-
-MIT License — free for research, education, and development.
-
----
-
-
+* (00 + 11)
