@@ -51,6 +51,31 @@ def apply_bit_flip(rho, p):
 
     return apply_kraus(rho, [E0, E1])
 
+def apply_amplitude_damping(rho, gamma):
+    """
+    Amplitude damping noise with parameter gamma in [0,1].
+    Models energy loss: |1> → |0>.
+    
+    Kraus operators:
+        E0 = [[1, 0],
+              [0, sqrt(1-gamma)]]
+
+        E1 = [[0, sqrt(gamma)],
+              [0, 0]]
+    """
+
+    sqrt1mg = np.sqrt(max(0.0, 1.0 - gamma))
+    sqrtg = np.sqrt(max(0.0, gamma))
+
+    E0 = np.array([[1.0, 0.0],
+                   [0.0, sqrt1mg]], dtype=complex)
+
+    E1 = np.array([[0.0, sqrtg],
+                   [0.0, 0.0]], dtype=complex)
+
+    return apply_kraus(rho, [E0, E1])
+
+
 
 def purity(rho):
     """
